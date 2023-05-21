@@ -1,0 +1,55 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<div class="page-title-area">
+    <div class="container">
+    <div class="page-title-content">
+    <h1>Doctor Details</h1>
+    <ul>
+    <li><a href="index.html">Home</a></li>
+    <li>Doctor Details</li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    {% for i in doctors %}
+    <div class="profile-authentication-area ptb-100">
+        <div class="container">
+        <div class="row">
+        <div class="col-lg-6 col-md-12">
+        <div class="login-form">
+
+<div class="form-group">    
+<label>Name</label>
+    <input type="text" name="firstname" class="form-control" value="{{i.first_name}}"  readonly>
+</div>
+
+<div class="form-group">    
+    <label>Degree</label>
+        <input type="text" class="form-control" value="{{i.d_degree}}"  readonly>
+    </div>
+
+    <div class="form-group">    
+        <label>Contact no</label>
+            <input type="text"  class="form-control" value="{{i.contactno}}"  readonly>
+        </div>
+        <div class="form-group">    
+            <label>Address</label>
+                <input type="text" name="firstname" class="form-control" value="{{i.address}}"  readonly>
+            </div>              
+        </div>
+        </div>
+
+        <div class="col-lg-6 col-md-12">
+
+             <img src="{{i.d_picture.url}}" width="50%" height="50%" alt="img" >  
+
+        </div>
+       </div>
+
+    <br><br>    
+    {% endfor %}
+{% endblock %}

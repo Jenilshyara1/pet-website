@@ -1,0 +1,67 @@
+﻿{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="page-title-area">
+<div class="container">
+<div class="page-title-content">
+<h1>Checkout</h1>
+<ul>
+<li><a href="{% url 'index' %}}">Home</a></li>
+<li>Checkout</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div class="profile-authentication-area ptb-100">
+<div class="container">
+<div class="row">
+<div class="col-lg-6 col-md-12">
+<div class="login-form">
+<h2>Checkout</h2>
+
+<form action="{% url 'pay' %}" method="POST">
+<div class="form-group">
+
+{% csrf_token %}
+
+<input type="text" name="" value="{{user_details.user_id.email}}">
+<label>Full name</label>
+<input type="text" name="" class="form-control" placeholder="Your name" required>
+</div>
+<div class="form-group">
+<label>Contact no.</label>
+<input type="text" name="" class="form-control" placeholder="Your contact number" required>
+</div>
+
+</div>
+</div>
+
+<div class="col-lg-6 col-md-12">
+<div class="register-form">
+<br><br><br>
+
+    <div class="form-group">
+
+<label>Address</label>
+<textarea type="textbox" name="address"   class="form-control" rows="4" cols="6" placeholder="Enter your address" required>
+</textarea></div><br>
+<div class="form-group">
+<label>Pin Code</label>
+<input type="text" name="pincode" class="form-control"  placeholder="Enter your area pin code" required>
+</div>
+<br>
+<label>Amount</label>
+<input type="text" name="amount" class="form-control" value="{{totalamount}}" readonly>
+</div>
+<br>
+<button type="submit" style="background-color: #259cd8; border: 0px; width: 100px;">Payment</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

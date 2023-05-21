@@ -1,0 +1,56 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="page-title-area">
+<div class="container">
+<div class="page-title-content">
+<h1>Appointment</h1>
+<ul>
+<li><a href="{% url 'index' %}">Home</a></li>
+<li>Appointment</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div class="profile-authentication-area ptb-100">
+<div class="container">
+<div class="row">
+
+<div class="col-lg-6 col-md-12">
+<div class="register-form">
+
+<h3>Book your Appointment now</h3><br>
+
+<form action="{% url 'bookap' %}" method="post">
+{% csrf_token %}
+
+<input type="hidden" name="d_id" value="{{d_id.id}}">
+<div class="form-group"><label>First name</label>
+<input type="text" class="form-control" name="apfirstname" placeholder="Enter your first name"></div>
+<div class="form-group">
+<div class="form-group"><label>Last name</label>
+<input type="text" name="aplastname" class="form-control" placeholder="Enter your last name"></div>
+<div class="form-group"><label>Contact No.</label>
+<input type="text" name="apcontactno" class="form-control" placeholder="Enter your Contact number"></div>
+
+<div class="form-group">
+<label>Date</label>
+<input type="date"  name="apdate" class="form-control" placeholder="Set Date">
+</div>
+<div class="form-group">
+<label>Time</label>
+<input type="time" name="aptime" class="form-control" placeholder="Set time">
+</div>
+
+<button type="submit" >Book Appointment</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}
+

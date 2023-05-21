@@ -1,0 +1,42 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="page-title-area">
+<div class="container">
+<div class="page-title-content">
+<h1>Feedback</h1>
+<ul>
+<li><a href="{% url 'index' %}">Home</a></li>
+<li>Feedback</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div class="profile-authentication-area ptb-100">
+<div class="container">
+<div class="row">
+<div class="col-lg-6 col-md-12">
+<div class="login-form">
+<form action="{% url 'feedback' %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+
+    <label>Name</label>
+    <input type="text" name="feedback_name" class="form-control" placeholder="Enter Your full name">
+    <br>
+    <label>Feedback</label>
+    <input type="text" name="cfeedback" class="form-control" placeholder="Write Your Feedback here">
+    </div>
+    <button type="submit">submit</button>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+<br>
+{% endblock %}

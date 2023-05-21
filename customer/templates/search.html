@@ -1,0 +1,52 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<br>
+<div class="row justify-content-center">
+
+
+
+
+    {% for i in searchproduct %}
+<div class="col-lg-3 col-md-6 col-sm-6">
+<div class="single-products-box">
+<div class="image">
+<a href="products-details.html" class="d-block">
+    <img src="{{i.picture.url}}" alt="img">
+
+</a>
+{% if msg %}
+<div class="alert alert-danger" role="alert">
+  {{msg}}
+</div>
+{% endif %}
+<ul class="products-button">
+<li><a href="cart.html"><i class='bx bx-cart-alt'></i></a></li>
+<li><a href="wishlist.html"><i class='bx bx-heart'></i></a></li>
+<li><a href="#" data-bs-toggle="modal" data-bs-target="#productsQuickView"><i class='bx bx-show'></i></a></li>
+<li><a href="products-details.html"><i class='bx bx-link-alt'></i></a></li>
+</ul>
+</div>
+<div class="content">
+<h3><a href="{% url 'productdetail' pk=i.id %}">{{i.productname}}</a></h3>
+<div class="price">
+<span class="new-price">{{i.price}}₹</span>
+</div>
+
+
+<div class="rating">
+<i class='bx bxs-star'></i>
+<i class='bx bxs-star'></i>
+<i class='bx bxs-star'></i>
+<i class='bx bxs-star'></i>
+<i class='bx bxs-star'></i>
+</div>
+</div>
+</div>
+</div>
+    {% endfor %}
+
+</div>
+
+<br>
+{% endblock %}

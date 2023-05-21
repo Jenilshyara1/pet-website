@@ -1,0 +1,40 @@
+{% extends 'adminmain.html' %}
+{% load static %}
+{% block content %}
+
+
+<br>
+<br>
+<br>
+
+
+
+<div class="body">
+    <div class="table-responsive">
+        <table class="table table-striped m-b-0">
+            <thead>
+                <tr>
+                    <th hidden>Id</th>
+                    <th>Retailer Name</th>
+                    <th>Adress</th>
+                    <th>Contact No.</th>
+                </tr>
+            </thead>
+            <tbody>  
+                <tr>
+                    {% for i in retailers %}
+                    <td hidden>{{i.id}}</td>
+                    <td>{{i.first_name}} {{i.last_name}}</td>
+                    <td>{{i.address}}</td>
+                    <td>{{i.contactno}}</td>
+                    <td><a href="{% url 'delete_retailer' pk=i.id %}">Remove retailer</a></td>
+                </tr>
+                {% endfor %}
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}

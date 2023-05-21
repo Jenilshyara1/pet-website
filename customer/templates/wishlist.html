@@ -1,0 +1,50 @@
+﻿{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="page-title-area">
+<div class="container">
+<div class="page-title-content">
+<h1>Wishlist</h1>
+<ul>
+<li><a href="{% url 'index' %}">Home</a></li>
+<li>Wishlist</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div class="wishlist-area ptb-100">
+<div class="container">
+<form>
+<div class="wishlist-table table-responsive">
+<table class="table table-bordered">
+<thead>
+<tr>
+<th scope="col">Product</th>
+<th scope="col">Name</th>
+<th scope="col">Price</th>
+<th scope="col"></th>
+</tr>
+</thead>
+<tbody>
+{% for i in wish %}
+<tr>
+<td><img src="{{i.product_id.picture.url}}" alt="item">
+</td>
+<td><a href="{% url 'productdetail' pk=i.product_id.id %}">{{i.product_id.productname}}</a></td>
+<td class="product-price">{{i.product_id.price}}</td>
+<td><a href="{% url 'addtocart' pk=i.product_id.id %}" style="color:red;">Shop now</a></td>
+<td><a href="{% url 'delwish' pk=i.id %}" class="remove"><i class='bx bx-trash-alt' style="color: bl;"></i></a></td>
+</tr>   
+{% endfor %}
+</tbody>
+</table>
+</div>
+</form>
+</div>
+</div>
+{% endblock %}
+

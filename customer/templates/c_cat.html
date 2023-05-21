@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<br>
+
+    <div class="section-title">
+     <h2>Accessories</h2>
+    </div>
+<div class="row justify-content-center">
+<!-- prodcut starts -->
+
+{% for i in product %}
+<div class="col-lg-3 col-md-6 col-sm-6">
+<div class="single-products-box">
+<div class="image">
+<a href="{% url 'productdetail' pk=i.id %}" class="d-block">
+    <img src="{{i.picture.url}}" alt="img">
+
+</a>
+<ul class="products-button">
+<li><a href="cart.html"><i class='bx bx-cart-alt'></i></a></li>
+<li><a href="wishlist.html"><i class='bx bx-heart'></i></a></li>
+</ul>
+</div>
+<div class="content">
+<h3><a href="{% url 'productdetail' pk=i.id %}">{{i.productname}}</a></h3>
+<div class="price">
+<span class="new-price">{{i.price}}₹</span>
+</div>
+<div class="rating">
+<i class='bx bxs-star'></i>
+<i class='bx bxs-star'></i>
+<i class='bx bxs-star'></i>
+<i class='bx bxs-star'></i>
+<i class='bx bxs-star'></i>
+</div>
+</div>
+</div>
+</div>
+    {% endfor %}
+    <!-- product end -->
+    </div>
+
+{% endblock %}

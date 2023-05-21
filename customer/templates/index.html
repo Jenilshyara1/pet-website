@@ -1,0 +1,308 @@
+﻿{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="main-banner-area">
+<div class="container-fluid">
+<div class="row align-items-center">
+<div class="col-lg-6 col-md-12">
+<div class="main-banner-content">
+<span class="sub-title">Welcome to Patoi</span>
+<h1>We provide best pet products</h1>
+<p>Save 20% off your first order</p>
+<a href="{% url 'index' %}" class="default-btn"><span>Shop Now</span></a>
+</div>
+</div>
+<div class="col-lg-6 col-md-12">
+<div class="main-banner-image">
+<img src="{% static 'assets/img/banner/banner1.png' %}" alt="banner-image">
+<img src="{% static 'assets/img/banner/banner2.png' %}" alt="banner-image">
+<img src="{% static 'assets/img/banner/banner3.png' %}" alt="banner-image">
+ </div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="offer-area pt-100 pb-75">
+<div class="container">
+<div class="row justify-content-center">
+<div class="col-lg-4 col-md-6">
+<div class="single-offer-box">
+<a href="{% url 'index' %}"class="d-block">
+<img src="{% static 'assets/img/offer/offer1.jpg' %}" alt="offer-image">
+</a>
+</div>
+</div>
+<div class="col-lg-4 col-md-6">
+<div class="single-offer-box">
+<a href="{% url 'index' %}" class="d-block">
+<img src="{% static 'assets/img/offer/offer2.jpg' %}" alt="offer-image">
+</a>
+</div>
+</div>
+<div class="col-lg-4 col-md-6">
+<div class="single-offer-box">
+<a href="{% url 'index' %}" class="d-block">
+<img src="{% static 'assets/img/offer/offer3.jpg' %}" alt="offer-image">
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="categories-area pb-75">
+<div class="container">
+<div class="section-title">
+<h2>Shop by Categories</h2>
+</div>
+<div class="categories-slides owl-carousel owl-theme">
+<div class="single-categories-box">
+<a href="{% url 'c_food' %}" class="d-block">
+<img src="{% static 'assets/img/categories/categories1.jpg' %}" alt="categories-image">
+<h3>Food</h3>
+</a>
+</div>
+<div class="single-categories-box">
+<a href="{% url 'c_acc' %}" class="d-block">
+<img src="{% static 'assets/img/categories/categories3.jpg' %}" alt="categories-image">
+<h3>Pet accessories</h3>
+</a>
+</div>
+
+<div class="single-categories-box">
+<a href="{% url 'c_dog' %}" class="d-block">
+<img src="{% static 'assets/img/categories/categories5.jpg' %}" alt="categories-image">
+<h3>Dog</h3>
+</a>
+</div>
+<div class="single-categories-box">
+    <a href="{% url 'c_bird' %}" class="d-block">
+    <img src="{% static 'assets/img/categories/categories5.jpg' %}" alt="categories-image">
+    <h3>Birds</h3>
+    </a>
+    </div>
+<div class="single-categories-box">
+<a href="{% url 'c_cat' %}" class="d-block">
+<img src="{% static 'assets/img/categories/categories6.jpg' %}" alt="categories-image">
+<h3>Cat</h3>
+</a>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="products-area pb-75">
+<div class="container">
+<div class="section-title">
+ <h2>New Arrivals</h2>
+</div>
+<div class="row justify-content-center">
+
+<!-- prodcut starts -->
+
+    {% for i in product %}
+<div class="col-lg-3 col-md-6 col-sm-6">
+<div class="single-products-box">
+<div class="image">
+<a href="{% url 'productdetail' pk=i.id %}" class="d-block">
+    <img src="{{i.picture.url}}" alt="img">
+
+</a>
+<ul class="products-button">
+<li><a href="{% url 'addtocart' pk=i.id %}"><i class='bx bx-cart-alt'></i></a></li>
+<li><a href="{% url 'addtowish' pk=i.id %}"><i class='bx bx-heart'></i></a></li>
+</ul>
+</div>
+<div class="content">
+<h3><a href="{% url 'productdetail' pk=i.id %}">{{i.productname}}</a></h3>
+<div class="price">
+<span class="new-price">{{i.price}}₹</span>
+</div>
+<div class="rating">
+<i class='bx bxs-star'></i>
+<i class='bx bxs-star'></i>
+<i class='bx bxs-star'></i>
+<i class='bx bxs-star'></i>
+<i class='bx bxs-star'></i>
+</div>
+</div>
+</div>
+</div>
+    {% endfor %}
+    <!-- product end -->
+
+</div>
+</div>
+</div>
+
+
+<div class="offer-area pb-75">
+<div class="container">
+<div class="row justify-content-center">
+<div class="col-lg-6 col-md-6">
+<div class="single-offer-box">
+<a href="{% url 'index' %}" class="d-block">
+<img src="{% static 'assets/img/offer/offer4.jpg' %}" alt="offer-image">
+</a>
+</div>
+</div>
+<div class="col-lg-6 col-md-6">
+<div class="single-offer-box">
+<a href="{% url 'index' %}" class="d-block">
+<img src="{% static 'assets/img/offer/offer5.jpg' %}" alt="offer-image">
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="products-area pb-75">
+    <div class="container">
+    <div class="section-title">
+     <h2>Best Seller</h2>
+    </div>
+    <div class="row justify-content-center">
+    
+    <!-- prodcut starts -->
+    
+        {% for i in product %}
+    <div class="col-lg-3 col-md-6 col-sm-6">
+    <div class="single-products-box">
+    <div class="image">
+    <a href="{% url 'productdetail' pk=i.id %}" class="d-block">
+        <img src="{{i.picture.url}}" alt="img">
+    
+    </a>
+    <ul class="products-button">
+    <li><a href="{% url 'addtocart' pk=i.id %}"><i class='bx bx-cart-alt'></i></a></li>
+    <li><a href="{% url 'addtowish' pk=i.id %}"><i class='bx bx-heart'></i></a></li>
+    </ul>
+    </div>
+    <div class="content">
+    <h3><a href="{% url 'productdetail' pk=i.id %}">{{i.productname}}</a></h3>
+    <div class="price">
+    <span class="new-price">{{i.price}}₹</span>
+    </div>
+    <div class="rating">
+    <i class='bx bxs-star'></i>
+    <i class='bx bxs-star'></i>
+    <i class='bx bxs-star'></i>
+    <i class='bx bxs-star'></i>
+    <i class='bx bxs-star'></i>
+    </div>
+    </div>
+    </div>
+    </div>
+        {% endfor %}
+        <!-- product end -->
+    
+    </div>
+    </div>
+    </div>
+
+
+<div class="offer-area pb-75">
+<div class="container">
+<div class="single-offer-box">
+<a href="{% url 'index' %}" class="d-block">
+<img src="{% static 'assets/img/offer/offer6.jpg' %}" alt="offer-image">
+</a>
+</div>
+</div>
+</div>
+
+
+<div class="brands-area pb-75">
+<div class="container">
+<div class="section-title">
+<h2>Top Brands</h2>
+</div>
+<div class="row justify-content-center align-items-center">
+<div class="col-lg-2 col-md-3 col-sm-4 col-4">
+<div class="single-brands-box">
+<img src="{% static 'assets/img/brands/brands1.png' %}" alt="brands">
+</a>
+</div>
+</div>
+<div class="col-lg-2 col-md-3 col-sm-4 col-4">
+<div class="single-brands-box">
+<img src="{% static 'assets/img/brands/brands2.png' %}" alt="brands">
+</a>
+</div>
+</div>
+<div class="col-lg-2 col-md-3 col-sm-4 col-4">
+<div class="single-brands-box">
+<img src="{% static 'assets/img/brands/brands3.png' %}" alt="brands">
+</a>
+</div>
+</div>
+<div class="col-lg-2 col-md-3 col-sm-4 col-4">
+<div class="single-brands-box">
+<img src="{% static 'assets/img/brands/brands4.png' %}" alt="brands">
+</a>
+</div>
+</div>
+<div class="col-lg-2 col-md-3 col-sm-4 col-4">
+<div class="single-brands-box">
+
+<img src="{% static 'assets/img/brands/brands5.png' %}" alt="brands">
+</a>
+</div>
+</div>
+<div class="col-lg-2 col-md-3 col-sm-4 col-4">
+<div class="single-brands-box">
+<img src="{% static 'assets/img/brands/brands6.png' %}" alt="brands">
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- bottom baner -->
+<div class="facility-area">
+<div class="container">
+<div class="facility-inner">
+<div class="row">
+<div class="col-lg-3 col-md-3 col-sm-6 col-6">
+<div class="single-facility-box">
+<img src="{% static 'assets/img/icon/icon1.png' %}" alt="icon">
+<h3>Best collection</h3>
+</div>
+</div>
+<div class="col-lg-3 col-md-3 col-sm-6 col-6">
+<div class="single-facility-box">
+<img src="{% static 'assets/img/icon/icon2.png' %}" alt="icon">
+<h3>Fast delivery</h3>
+</div>
+</div>
+<div class="col-lg-3 col-md-3 col-sm-6 col-6">
+<div class="single-facility-box">
+<img src="{% static 'assets/img/icon/icon3.png' %}" alt="icon">
+<h3>24/7 customer support</h3>
+</div>
+</div>
+<div class="col-lg-3 col-md-3 col-sm-6 col-6">
+<div class="single-facility-box">
+<img src="{% static 'assets/img/icon/icon4.png' %}" alt="icon">
+<h3>Secured payment</h3>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<br>
+
+
+{% endblock %}

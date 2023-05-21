@@ -1,0 +1,57 @@
+﻿{% extends 'retailermain.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container-fluid">                
+                <div class="row clearfix">
+    <div class="col-lg-4 col-md-6">
+        <div class="card">
+            <div class="body">
+                <h3 class="number count-to m-b-0" data-from="0" data-to="{{data.total_customer}}" data-speed="2500" data-fresh-interval="700">1600 <i class="zmdi zmdi-trending-up float-right"></i></h3>
+                <p class="text-muted">Orders</p>   
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <div class="card">
+            <div class="body">
+                <h3 class="number count-to m-b-0" data-from="0" data-to="{{data.total_product}}" data-speed="2500" data-fresh-interval="1000"><i class="zmdi zmdi-trending-up float-right"></i></h3>
+                <p class="text-muted">Products</p>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="body">
+    <div class="table-responsive">
+        <table class="table table-striped m-b-0">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Image</th>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr>
+                    {% for i in r_product %}
+                    <td>{{i.id}}</td>
+                    <td><img src="{{i.picture.url}}" alt="img" width="40px" height="40px"></td>
+                    <td><a href="{% url 'rproductdetail' pk=i.id %}" >{{i.productname}}</a></td>
+                    <td>{{i.category}}</td>
+                    <td>{{i.price}}</td>
+                    <td>{{i.quantity}}</td>
+                    <td><a href="{% url 'delete_product' pk=i.id %}">delete</a></td>
+                </tr>
+                {% endfor %}
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="page-title-area">
+    <div class="container">
+    <div class="page-title-content">
+    <h1>Gallery</h1>
+    <ul>
+    <li><a href="{% url 'index' %}">Home</a></li>
+    <li>Gallery</li>
+    </ul>
+    </div>
+    </div>
+    </div>
+
+<div class="profile-authentication-area ptb-100">
+<div class="container">
+<div class="row">
+<div class="col-lg-12 col-md-24">
+<div class="login-form">
+
+
+<form action="{% url 'gallerypicture' %}" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+<input type=file name="galleryimage" value="Upload Image" required>
+<button type="submit" style="width: 150px;">submit</button>
+</form>
+<br>
+</div>
+{% for i in img %}
+
+        <div class="image">
+            <span></span>
+        <img src="{{i.g_image.url}}" alt="img" width="300px" height="300px">
+        </div>
+            <br>
+            <!-- <form>
+                {% csrf_token %}
+                
+        <button type="submit" style=" border: 0px; height: 25px; width: 25px; background-color: #259Cd8;" class="like" ><i class='bx bx-heart'></i></a> </button>
+
+        &nbsp;{{i.like}} people liked&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+        {% if user_details.id == i.customer_id.id %}
+        <i class='bx bx-trash'></i>{% endif %}
+</div>
+<!-- </form> -->
+    
+
+<br><br> 
+{% endfor %}   
+            </div>
+        <br><br>
+</div>
+</div>
+</div>
+
+
+{% endblock %}

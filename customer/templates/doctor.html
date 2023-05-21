@@ -1,0 +1,52 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="page-title-area">
+    <div class="container">
+    <div class="page-title-content">
+    <h1>Doctors</h1>
+    <ul>
+    <li><a href="{% url 'index' %}">Home</a></li>
+    <li>Doctors</li>
+    </ul>
+    </div>
+    </div>
+    </div>
+
+    <div class="body">
+        <div class="table-responsive">
+            <table class="table table-striped m-b-0">
+                <thead>
+                    <tr>
+                        <th hidden>Doctor id</th>
+                        <th>Doctor name</th>
+                        <th>Degree</th>
+                        <th>Contact No.</th>
+                        <th>Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        {% for i in alldoctors %}
+                        <td hidden>{{i.id}}</td>
+                        <td><a href="{% url 'doctordetail' pk=i.id %}" >{{i.first_name}} {{i.last_name}}</a></td>
+                        <td>{{i.d_degree}}</td>
+                        <td>{{i.contactno}}</td>
+                        <td>{{i.address}}</td>
+                        <td><button><a href="{% url 'bookappointment' pk=i.id %}">  Book Appointment</a></button></td>
+                    </tr>
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+
+
+
+{% endblock %}

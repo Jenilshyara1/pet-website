@@ -1,0 +1,124 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="csrf-token" content="iL8hUXsdXy71MbOZjq4fWUv4KGPZnJ7k17P7RClL">
+        <link rel="icon" href="https://thememakker.com/templates/oreo/hospital/laravel/public/favicon.ico" type="image/x-icon"> <!-- Favicon-->
+        <title>Dashboard </title>
+        <meta name="description" content="Oero Laravel">
+        <meta name="author" content="Oero Laravel">        
+        <link rel="stylesheet" href="{% static 'assets\plugins\bootstrap\css\bootstrap.min.css' %}">
+                            <link rel="stylesheet" href="{% static 'assets\plugins\jvectormap\jquery-jvectormap-2.0.3.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets\plugins\morrisjs\morris.min.css' %}">
+                <!-- Custom Css -->
+        <link rel="stylesheet" href="{% static 'assets\css\main.css' %}">
+                <link rel="stylesheet" href="{% static 'assets\css\color_skins.css' %}">
+            </head>
+
+
+<!-- header start  -->
+<body class="theme-cyan">
+        <!-- Page Loader -->
+        <div class="page-loader-wrapper">
+            <div class="loader">
+                <div class="m-t-30"><img class="zmdi-hc-spin" src="{% static 'assets\images\logo.svg' %}" width="48" height="48" alt="Oreo"></div>
+                <p>Please wait...</p>        
+            </div>
+        </div>
+        <!-- Overlay For Sidebars -->
+        <div class="overlay"></div>
+        <nav class="navbar p-l-5 p-r-5">
+    <ul class="nav navbar-nav navbar-left">
+        <li>
+            <div class="navbar-header">
+                <a href="javascript:void(0);" class="bars"></a>
+                <a class="navbar-brand">
+                    <br>
+                    <!-- <img src="{% static 'assets\images\logo.svg" width="30" alt="Oreo"> -->
+                    <span class="m-l-10" style="font-size: 0.7cm;">Patoi</span></a>
+            </div>
+        </li>
+        </li>
+        </li>
+            
+        <li class="d-none d-md-inline-block">
+            <div class="input-group">                
+                 
+            </div>
+        </li>        
+        <li class="float-right">
+            <a href="{% url 'logout' %}" class="mega-menu" data-close="true"><i class="zmdi zmdi-power"></i></a>
+            
+        </li>
+    </ul>
+</nav>        
+<!-- Left Sidebar -->
+<aside id="leftsidebar" class="sidebar">
+    <div class="tab-content">
+        <div class="tab-pane stretchRight active" id="dashboard">
+            <div class="menu">
+                <ul class="list">
+                    <li class="">
+                        <a href="{% url 'retailerprofile' %}"><i class="zmdi zmdi-account-o"></i><span>Profile</span></a>    
+                    </li>
+                   
+                    <li>
+                        <a href="{% url 'orders' %}" ><i class="zmdi zmdi-blogger "></i><span>Orders</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'paymenthistory' %}" ><i class="zmdi zmdi-blogger"></i><span>Payment History</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'addproduct' %}" ><i class="zmdi zmdi-folder"></i><span>+Add Products</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>    
+</aside>
+</div>        
+<section class="content home">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-5 col-md-5 col-sm-12">
+                <a href="{% url 'retailerindex' %}"><h2>Dashboard<small class="text-muted">Welcome {{user_details.first_name}}</small></h2></a>
+            </div>            
+        </div>
+    </div>
+            
+<!-- header end  -->
+
+{% block content %}
+{% endblock %} 
+</section>
+
+<!-- Scripts -->
+<script src="{% static 'assets\bundles\libscripts.bundle.js' %}"></script>    
+<script src="{% static 'assets\bundles\vendorscripts.bundle.js' %}"></script>
+<script src="{% static 'assets\bundles\mainscripts.bundle.js' %}"></script>
+<script src="{% static 'assets\bundles\morrisscripts.bundle.js' %}"></script>
+<script src="{% static 'assets\bundles\jvectormap.bundle.js' %}"></script>
+<script src="{% static 'assets\bundles\knob.bundle.js' %}"></script>
+<script src="{% static 'assets\js\pages\index.js' %}"></script>
+<script src="{% static 'assets\plugins\dropzone\dropzone.js '%}"></script>
+				
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/59f5afbbbb0c3f433d4c5c4c/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+        </script>
+        <!--End of Tawk.to Script-->
+</script>
+</body>
+</html>

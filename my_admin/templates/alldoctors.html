@@ -1,0 +1,43 @@
+{% extends 'adminmain.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<br>
+<br>
+
+
+<div class="body">
+    <div class="table-responsive">
+        <table class="table table-striped m-b-0">
+            <thead>
+                <tr>
+                    <th hidden>Id</th>
+                    <th>Image</th>
+                    <th>Doctor Name</th>
+                    <th>Degree</th>
+                    <th>Address</th>
+                    <th>Contact No.</th>
+                </tr>
+            </thead>
+            <tbody>  
+                <tr>
+                    {% for i in doctors %}
+                    <td hidden>{{i.id}}</td>
+                    <td><img src="{{i.d_picture.url}}" width="80px" height="60px" alt="img"></td>
+                    <td>{{i.first_name}} {{i.last_name}}</td>
+                    <td>{{i.d_degree}}</td>
+                    <td>{{i.address}}</td>
+                    <td>{{i.contactno}}</td>
+                    <td><a href="{% url 'delete_doctor' pk=i.id %}">Remove Doctor</a></td>
+                    
+                </tr>
+                {% endfor %}
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}

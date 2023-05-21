@@ -1,0 +1,53 @@
+﻿{% extends 'doctormain.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container-fluid">                
+    <div class="row clearfix">
+<div class="col-lg-4 col-md-6">
+<div class="card">
+<div class="body">
+    <h3 class="number count-to m-b-0" data-from="0" data-to="{{data.total_ap}}" data-speed="2500" data-fresh-interval="700">1600 <i class="zmdi zmdi-trending-up float-right"></i></h3>
+    <p class="text-muted">Appointments</p>   
+</div>
+</div>
+</div>
+<div class="col-lg-4 col-md-6">
+<div class="card">
+
+</div>
+</div>
+</div>
+<br>
+<div class="body">
+    <div class="table-responsive">
+        <table class="table table-striped m-b-0">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Contact no.</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    
+                </tr>
+            </thead>
+            
+            <tbody>
+                <tr>
+                    {% for i in ap %}
+                <td>{{i.id}}</td>
+                <td>{{i.firstname}} {{i.lastname}}</td>
+                <td>{{i.contactnumber}}</td>
+                <td>{{i.date}}</td>
+                <td>{{i.time}}</td>
+                <td><a href="{% url 'decline' pk=i.id %}" >Decline</a></td>
+                </tr>
+            {% endfor %}
+                <br>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

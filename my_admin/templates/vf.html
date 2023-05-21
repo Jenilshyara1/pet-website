@@ -1,0 +1,24 @@
+{% extends 'adminmain.html' %}
+{% load static %}
+{% block content %}
+
+
+<br>
+<br>
+<br>
+{% for i in c_vf %}
+
+<li><span style="font-style:oblique; color: rgb(46, 116, 92);">
+{{i.f_name}}</span></li>
+<span>{{i.c_feedback}}</span>
+<br>
+<a href="{% url 'delete_vf' pk=i.id %}">Remove</a>
+
+<br><br>
+
+{% endfor %}
+
+
+
+
+{% endblock %}

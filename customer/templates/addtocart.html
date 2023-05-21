@@ -1,0 +1,95 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="page-title-area">
+<div class="container">
+<div class="page-title-content">
+<h1>Cart</h1>
+<ul>
+<li><a href="{% url 'index' %}">Home</a></li>
+<li>Cart</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div class="cart-area ptb-100">
+<div class="container">
+
+<form>
+<div class="cart-table table-responsive">
+<table class="table table-bordered">
+
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Product</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in addto %}
+    <tr class="border">
+<input type="hidden" class="product_id" value="{{i.product_id}}">
+<input type="hidden" class="cart_id" value="{{i.id}}">
+<td><a href="{% url 'delet_cp' pk=i.id %}" class="remove"><i class='bx bx-trash'></i></a></td>
+<td class="product-thumbnail">
+<a href="{% url 'index' %}">
+<img src="{{i.product_id.picture.url}}" alt="item">
+<h3>{{i.product_id.productname}}</h3>
+</a>
+</td>
+<td><input type="text" name="product_price" class="price" value="{{i.product_id.price}}" style="border:0px;" readonly></td>
+<td>
+<input type="number" name="qty" class="qty" width="10px" height="10px" value="{{i.qty}}" min="1" max="50">
+</td>
+<td><span id="{{i.id}}">{{i.total_price}}</span></td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+<div class="cart-totals">
+<ul>
+<li>Subtotal <span class="sub_total">{{totalamount}}</span></li>
+<li>Shipping <span>Free</span></li>
+<li>Total <span class="sub_total">{{totalamount}}</span></li>
+</ul>
+<a href="{% url 'amount' %}" class="default-btn"><span>Proceed to Checkout</span></a>
+</div>
+</form>
+</div>
+</div>
+
+<script>
+    $(".qty").change(function(){
+      var product_id = $(this).closest(".border").find('.product_id').val();
+      var qty = $(this).closest(".border").find('.qty').val();
+      var price = $(this).closest(".border").find('.price').val();
+      var cart_id = $(this).closest(".border").find('.cart_id').val();
+      var token = $('input[name=csrfmiddlewaretoken]').val();
+      $.ajax({
+        method:"POST",
+        url : '{% url "update_qty" %}',
+        data:
+        {
+          'product_id':product_id,
+          'cart_id':cart_id,
+          'qty':qty,
+          'price':price,
+          csrfmiddlewaretoken:token,
+        },
+        success:function(data)
+        {
+          $("#"+cart_id).html(data.total);
+          $(".sub_total").html(data.sub_total);
+  
+        }
+      });
+    });
+  </script>
+{% endblock %}

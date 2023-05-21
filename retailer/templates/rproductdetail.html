@@ -1,0 +1,52 @@
+{% extends 'retailermain.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<br>
+<br>
+<br>
+    
+    {% for i in product %}
+    <div class="products-details-area ptb-100">
+    <div class="container">
+    <div class="row align-items-center">
+    <div class="col-lg-5 col-md-12">
+    <div class="products-details-thumbs-image">
+    <ul class="products-details-thumbs-image-slides">
+    <li><img src="{{i.picture.url}}" alt="image"></li>
+    </ul>
+    <div class="slick-thumbs">
+
+    </div>
+    </div>
+    </div>
+    <div class="col-lg-7 col-md-12">
+    <div class="products-details-desc">
+    <h3>{{i.productname}}</h3>
+    <div class="price">
+    <span class="new-price">{{i.price}}₹</span>
+    </div>
+
+    <p>{{i.description}}</p>
+    
+
+    <span>Categories:</span>{{i.category}}<br>
+    <span>Quantity:</span> <a >{{i.quantity}}</a>
+   
+ 
+    </ul>
+    <div class="products-share">
+    <ul class="social">
+
+    
+    </ul>
+    </div>
+    </div>
+    </div>
+    
+    {% endfor %}
+
+
+{% endblock %}

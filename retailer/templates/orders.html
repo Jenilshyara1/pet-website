@@ -1,0 +1,40 @@
+{% extends 'retailermain.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<br>
+<br>
+<br>
+<div class="body">
+    <div class="table-responsive">
+        <table class="table table-striped m-b-0">
+            <thead>
+                <tr>
+                    <th>Order Id</th>
+                    <th>Customer id</th>
+                    <th>Order Date</th>
+                    <th>Amount</th>
+                    <th>Payment status</th>
+                    <th>Order status</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr>
+                    {% for i in r_product %}
+                    <td>{{i.id}}</td>
+                    <td>{{i.productname}}</td>
+                    <td>{{i.category}}</td>
+                    <td>{{i.price}}</td>
+                    <td>{{i.quantity}}</td>
+                </tr>
+                {% endfor %}
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}
